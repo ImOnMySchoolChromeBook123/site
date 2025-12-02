@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oasis Games</title>
+    <title>Oasis.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
     <style>
         ::-webkit-scrollbar {
             width: 8px;
@@ -172,7 +171,7 @@
             transform: scale(1.03);
         }
     </style>
-</head>
+<link rel="icon" type="image/png" href="https://codehs.com/uploads/69282483c811dd2d3097d6b6bc99f734"></head>
 <body class="h-full flex flex-col">
 
     <header class="sticky top-0 z-40 py-4 sm:py-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700/50">
@@ -196,8 +195,8 @@
                   </path>
                 </pattern>
               </defs>
-              <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">Oasis Games</text>
-              <text text-anchor="middle" x="50" y="15" font-size="17" class="fill-gray-900 dark:fill-white" fill-opacity="0.1">Oasis Games</text> 
+              <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">Oasis.</text>
+              <text text-anchor="middle" x="50" y="15" font-size="17" class="fill-gray-900 dark:fill-white" fill-opacity="0.1">Oasis.</text> 
             </svg>
         </h1>
     </header>
@@ -739,7 +738,7 @@
 
         
         document.addEventListener('DOMContentLoaded', () => {
-            const gamesListUrl = 'https://cdn.jsdelivr.net/gh/Blurtuz/assets2@latest/games2.json';
+            const gamesListUrl = 'https://cdn.jsdelivr.net/gh/Blurtuz/assets2@latest/games6.json';
 
             fetch(gamesListUrl)
                 .then(response => {
@@ -750,7 +749,7 @@
                 })
                 .then(text => {
                     if (!text) {
-                        throw new Error("The 'games.json' file is empty.");
+                        throw new Error("The 'games5.json' file is empty.");
                     }
                     try {
                         allGames = JSON.parse(text);
@@ -783,4 +782,38 @@
         });
     </script>
 </body>
+<script>
+function updateFooterClock() {
+    const now = new Date();
+
+    const timeOptions = {
+        timeZone: "America/Denver",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+    };
+
+    const time = now.toLocaleTimeString("en-US", timeOptions).replace(":00", "");
+
+    const dateOptions = {
+        timeZone: "America/Denver",
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+        weekday: "short"
+    };
+
+    const dateParts = now.toLocaleDateString("en-US", dateOptions).split(", ");
+    const date = dateParts[0];   // MM/DD/YYYY
+    const day = dateParts[1].toUpperCase(); // MON → MON
+
+    document.getElementById("footer-clock").textContent =
+        `${time} ${date} ${day}`;
+}
+
+setInterval(updateFooterClock, 1000);
+updateFooterClock();
+</script>
+</footer><p id="footer-clock" style="font-size: 1.2rem; text-align: center; margin-top: 8px;" 
+   class="text-gray-400 dark:text-gray-400"></p></footer>
 </html>
